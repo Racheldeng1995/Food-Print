@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./farmerpage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="user-header">
+        <div class="user" id="user">USER NAME</div>
+        <div class="farm-form">
+        <label class="farm-label" for="farm-name">Farm Name:</label>
+        <input class="farm-name-input" id="farm-name" type="text" name="farm-name"  />
+    </div>
+        <div class="fund" id="fund"><span class="fund-dec">Your Money: </span> 1.000</div>
+    </header>
+    <div class="sub">
+        <div class="sub-header-name">Animals In Your Farm</div>
+        <button type="button"  class="animalBtn"id="btnAnMarket" >Go to Animal Market</button>
+
+    </div>
+    <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="close-btn" id="close-pointer">&times;</div>
+            <h1>Title</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi ex aut deserunt, libero accusamus magni at quos, fugiat nesciunt blanditiis iure tempora rerum non dolores obcaecati. Vel soluta tempore quod!</p>
+            
+            </div>
+ 
+    <div class="under-headline">
+        <div class="under-name">Animal Name</div>
+        <div class="under-number">Number Of Animals </div>
+
+    </div>
+
+<main>
+    <div class="row">
+        <div class="column left">
+            <img class="imges" src="./sheep.jpeg" width="150px" height="80px" >
+        </div>
+
+        <div class="column middle">
+         <div class="animal-name"><h4 class="name">Sheep</h4></div>
+     
+        </div>
+
+        <div class="column right">
+            <div class="number-owned"><h4 class="amount" id="sheep-owned">1</h4></div>
+            
+
+        </div>
+        <div class="column left">
+            <img class="imges" src="./cute-sheep-avatar-farm-animal-hand-drawn-illustration-isolated-vector-good-as-sticker-210485836.jpeg" width="150px" height="80px" >
+            
+
+        </div>
+
+        <div class="column middle">
+         <div class="animal-name"><h4 class="name">Sheep</h4></div>
+        
+
+        </div>
+
+        <div class="column right">
+            <div class="number-owned"><h4 class="amount" id="sheep-owned">1</h4></div>
+           
+
+        </div>
+
+
+    </div>
+ 
+
+
+
+
+</main>
+<script src="./popup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+</body>
+
+</html>

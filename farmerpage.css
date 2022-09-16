@@ -1,0 +1,213 @@
+:root {
+  --primary-color: #553a2eb8;
+  --header-color: #f68b3f;
+  --header-font: "Fredoka One", cursive;
+  --sub-header: rgba(114, 143, 7, 0.816);
+  --inner-text:rgba(199, 90, 7, 0.673);
+  --inner-text-background:#FFE6C4;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(./2727.jpg);
+
+  background-size: cover;
+}
+.user-header {
+  background-color: #4d261400;
+  width: auto;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+/* HEADER INFOS*/
+.user-header .user {
+  color: var(--header-color);
+  font-size: 30px;
+  margin-left: 9%;
+  font-family: "Fredoka One", cursive;
+}
+.farm-form {
+  padding-right: 90px;
+}
+.user-header .farm-label {
+  font-size: 30px;
+  font-family: "Fredoka One", cursive;
+  color: var(--header-color);
+}
+.user-header .farm-name-input {
+  width: 300px;
+  color: black;
+  font-size: 35px;
+}
+.user-header .fund {
+  font-size: 30px;
+  font-family: "Fredoka One", cursive;
+  color: var(--header-color);
+  margin-right: 10%;
+}
+
+/* header END */
+
+/* SUB HEADER START */
+.sub{
+    display: flex;
+    justify-content: space-between;
+}
+.sub-header-name{
+  font-size: 70px;
+  font-family: "Fredoka One", cursive;
+  color: white;
+  text-align: left;
+  margin-top: 1%;
+  margin-right: 8%;
+}
+.animalBtn{
+    width: 600px;
+    height: 50px;
+    margin-right: 2%;
+    border-radius: 13px;
+    background-color: #6ec207;
+    font-size: large;
+}
+
+/* SUB HEADER END */
+
+/* 
+  UNDER-HEADLINE START */
+.under-headline {
+
+display: content;
+  font-size: 50px;
+  font-family: "Fredoka One", cursive;
+  color: rgba(114, 143, 7, 0.816);
+ 
+  
+}
+.under-name{
+    display: inline-block;
+   margin-top: 50px;
+    margin-left: 39%;
+    background-color: #FFE6C4;
+    border-radius: 12px;
+}
+.under-number{
+    display: inline-block;
+    margin-left: 14%;
+    background-color: #FFE6C4;
+    border-radius: 12px;
+}
+/* 
+  UNDER-HEADLINE END */
+
+/* Animals START */
+main {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  justify-content: space-between;
+  display: grid;
+}
+
+/* Clear floats after the columns */
+/* .row:after {
+  content: "";
+  display: table;
+  clear: both;
+} */
+
+.imges {
+  margin-left: 50%;
+  border-radius: 40px;
+  margin-top: 30%;
+
+}
+.animal-name {
+  padding-top: 47%;
+}
+.name {
+  width: 100%;
+  margin-left: 70%;
+
+  font-size: 60px;
+  font-family: "Fredoka One", cursive;
+  color: rgba(199, 90, 7, 0.673);
+  background-color: #FFE6C4;
+  text-align: center;
+  border-radius: 13px;
+}
+.number-owned {
+  margin-top: 90px;
+}
+.amount {
+  width: 100%;
+  margin-left: 70%;
+  margin-top: 5%;
+  font-size: 60px;
+  font-family: "Fredoka One", cursive;
+  color: rgba(199, 90, 7, 0.673);
+  background-color: #FFE6C4;
+  border-radius: 13px;
+}
+
+
+
+/* Pop Up OVERLAY */ 
+/* //////////////////// */
+.popup .overlay{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 300vw;
+  height: 300vh;
+  
+  z-index: 1;
+  display: none;
+  
+}
+.popup .content{
+ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: brown;
+  width: 1150px;
+height: 500px;
+  z-index: 2;
+  text-align: center;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.popup .close-btn{
+ cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  color: rgb(165, 14, 153);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+}
+.popup.active .overlay{
+  display: block;
+}
+.popup.active .content{ 
+  transition: all 800ms ease-in-out;
+  transform: translate(-50%, -50%) scale(1)
+
+}
+.popup.active .animalBtn{
+  display: none;
+}
