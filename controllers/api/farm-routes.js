@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const model = require('connect-session-sequelize/lib/model');
 const sequelize = require('../../config/connection');
 const { Farm, User, Animal, Transaction} = require('../../models');
 
@@ -11,8 +12,7 @@ router.get('/', (req, res) => {
       'id',
       'farm_name',
       'fund',
-      'user_id',
-      'created_at'
+      'user_id'
     ],
     include: [
     {
@@ -21,13 +21,8 @@ router.get('/', (req, res) => {
     },
     {
         model: Animal,
-        attributes:['id', 'animal_name', 'buy_price', 'sell_price' [sequelize.literal('(SELECT COUNT(*) FROM transaction where animal.id = transaction.animal_id)'), 'owned_animal_count']],
-        include:[
-          {
-            model: Transaction,
-            attributes:['id', 'transaction_type', 'transaction_amount', 'farm_id', 'animal_id']
-          }
-        ]
+        attributes:['id', 'animal_name', 'buy_price', 'sell_price']
+        
     }
     ]
   })
@@ -47,8 +42,7 @@ router.get('/:id', (req, res) => {
         'id',
         'farm_name',
         'fund',
-        'user_id',
-        'created_at'
+        'user_id'
     ],
     include: [
       {
@@ -56,21 +50,8 @@ router.get('/:id', (req, res) => {
           attributes: ['username']
       },
       {
-          model: Animal,
-          attributes:['id', 'animal_name', 'buy_price', 'sell_price',sequelize.literal(`
-          SELECT 
-            CASE WHEN (sell_amount+buy_amount)<=0 THEN 0 ELSE (sell_amount+buy_amount) END FROM
-          (
-          SELECT transaction.animal_id, (0-SUM(transaction_amount)) as amount FROM transaction where animal.id = transaction.animal_id and transaction_type = 'Sell'
-          UNION
-          SELECT transaction.animal_id,SUM(transaction_amount) as amount FROM transaction where animal.id = transaction.animal_id and transaction_type = 'Buy')
-          `), 'owned_animal_count'],
-          include:[
-            {
-              model: Transaction,
-              attributes:['id', 'transaction_type', 'transaction_amount', 'farm_id', 'animal_id']
-            }
-          ]
+        model: Animal,
+        attributes:['id', 'animal_name', 'buy_price', 'sell_price', [sequelize.fn('SUM', sequelize.literal("CASE WHEN transaction_type = 'Sell' THEN (0-transaction_amount) ELSE transaction_amount END")), 'owned_animal_count']]
       }
       ]
   })
@@ -110,9 +91,9 @@ router.put('/:id', (req, res) => {
     {
       transaction_id: 4,
       transaction_type: 'Sell',
-      transacion_amount: 1,
+      transacion_amount: -1,
       animal_id: 1,
-      price: -10,
+      price: 10,
       fund: 5000
     }
   */

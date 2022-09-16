@@ -23,7 +23,7 @@ Farm.init(
     fund: {
       type: DataTypes.INTEGER,
       defaultValue: 5000,
-      allowNull: false
+      allowNull: true
     },
     user_id: {
       type: DataTypes.INTEGER,

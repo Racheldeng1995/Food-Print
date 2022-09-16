@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Farm, User, Animal} = require('../../models');
+const { Farm, User, Animal, Transaction} = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -19,10 +19,6 @@ router.get('/', (req, res) => {
             {
                 model:User,
                 attributes: ['id', 'username']
-            },
-            {
-                model:FarmAnimal,
-                attributes:['id', 'farm_id', 'animal_id']
             }
         ]
     }
