@@ -1,24 +1,23 @@
 const seedUsers = require('./user-seeds');
 const seedFarms = require('./farm-seeds');
 const seedAnimals = require('./animal-seeds');
-const seedFarmAnimals = require('./farm-animal-seeds');
-const seedTransactions = require('/transaction-seeds')
+const seedTransactions = require('./transaction-seeds')
 
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('\n----- DATABASE SYNCED -----\n');
-  await seedCategories();
+  await seedUsers();
   console.log('\n----- CATEGORIES SEEDED -----\n');
 
-  await seedProducts();
+  await seedFarms();
   console.log('\n----- PRODUCTS SEEDED -----\n');
 
-  await seedTags();
+  await seedAnimals();
   console.log('\n----- TAGS SEEDED -----\n');
 
-  await seedProductTags();
+  await seedTransactions();
   console.log('\n----- PRODUCT TAGS SEEDED -----\n');
 
   process.exit(0);

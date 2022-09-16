@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Farm, User, Animal, FarmAnimal, Transaction} = require('../../models');
-const withAuth = require('../../utils/auth');
+const { Farm, User, Animal, Transaction} = require('../../models');
+
 
 // get all users
 router.get('/', (req, res) => {
@@ -21,15 +21,13 @@ router.get('/', (req, res) => {
     },
     {
         model: Animal,
-        attributes:['id', 'animal_name', [sequelize.literal('(SELECT COUNT(*) FROM farm_animal where animal.id = farm_animal.animal_id)'), 'owned_animal_count']],
-        include:  {
-            model: FarmAnimal,
-            attributes:['id', 'farm_id', 'animal_id']
-        }
-    },
-    {
-        model: Transaction,
-        attributes:['id', 'transaction_type', 'transaction_amount', 'farm_id', 'animal_id', [sequelize.literal('(SELECT SUM(transaction.animal) FROM transaction, animal where transaction.farm_id = farm.id and animal.id=transaction.animal_id)'), 'owned_animal_count']]
+        attributes:['id', 'animal_name', 'buy_price', 'sell_price' [sequelize.literal('(SELECT COUNT(*) FROM transaction where animal.id = transaction.animal_id)'), 'owned_animal_count']],
+        include:[
+          {
+            model: Transaction,
+            attributes:['id', 'transaction_type', 'transaction_amount', 'farm_id', 'animal_id']
+          }
+        ]
     }
     ]
   })
@@ -53,19 +51,28 @@ router.get('/:id', (req, res) => {
         'created_at'
     ],
     include: [
-    {
-        model: Animal,
-        attributes:['id', 'animal_name', [sequelize.literal('(SELECT COUNT(*) FROM farm_animal where animal.id = farm_animal.animal_id)'), 'owned_animal_count']],
-        include:  {
-            model: FarmAnimal,
-            attributes:['id', 'farm_id', 'animal_id']
-        }
-    },
       {
-        model: User,
-        attributes: ['username']
+          model: User,
+          attributes: ['username']
+      },
+      {
+          model: Animal,
+          attributes:['id', 'animal_name', 'buy_price', 'sell_price',sequelize.literal(`
+          SELECT 
+            CASE WHEN (sell_amount+buy_amount)<=0 THEN 0 ELSE (sell_amount+buy_amount) END FROM
+          (
+          SELECT transaction.animal_id, (0-SUM(transaction_amount)) as amount FROM transaction where animal.id = transaction.animal_id and transaction_type = 'Sell'
+          UNION
+          SELECT transaction.animal_id,SUM(transaction_amount) as amount FROM transaction where animal.id = transaction.animal_id and transaction_type = 'Buy')
+          `), 'owned_animal_count'],
+          include:[
+            {
+              model: Transaction,
+              attributes:['id', 'transaction_type', 'transaction_amount', 'farm_id', 'animal_id']
+            }
+          ]
       }
-    ]
+      ]
   })
     .then(dbFarmData => {
       if (!dbFarmData) {
@@ -81,7 +88,12 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // expects {title: 'Taskmaster goes public!', content: 'it's important', user_id: 1}
+   /* req.body should look like this...
+    {
+      farm_name: "Happy Valley",
+      user_id: 4
+    }
+  */
   Farm.create({
     farm_name: req.body.farm_name,
     user_id: req.body.user_id
@@ -94,9 +106,19 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
+  /* req.body should look like this...
+    {
+      transaction_id: 4,
+      transaction_type: 'Sell',
+      transacion_amount: 1,
+      animal_id: 1,
+      price: -10,
+      fund: 5000
+    }
+  */
   Farm.update(
     {
-      farm_name: req.body.farm_name
+      fund: req.body.fund +  req.body.price* req.body.transaction_amount
     },
     {
       where: {
