@@ -22,7 +22,33 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id']
+        attributes: ['id', 'farm_name', 'fund', 'user_id', "created_at"]
+      }
+    ]
+  })
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user found with this id' });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/:username', (req, res) => {
+  User.findOne({
+    attributes: { exclude: ['password'] },
+    where: {
+      username: req.params.username
+    },
+    include: [
+      {
+        model: Farm,
+        attributes: ['id', 'farm_name', 'fund', 'user_id',"created_at"]
       }
     ]
   })
@@ -47,51 +73,73 @@ router.post('/', (req, res) => {
     password: req.body.password
   })
     .then(dbUserData => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+  
         res.json(dbUserData);
-      })
+      });
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-// router.post('/login', (req, res) => {
-//   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
-//   User.findOne({
-//     where: {
-//       username: req.body.username
-//     }
-//   }).then(dbUserData => {
-//     if (!dbUserData) {
-//       res.status(400).json({ message: 'No user with that username!' });
-//       return;
-//     }
+router.post('/login', (req, res) => {
+  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+  User.findOne({
+    where: {
+      username: req.body.username,
+      email: req.body.email
+    },
+    include: [
+      {
+        model: Farm,
+        attributes: ['id', 'farm_name', 'fund', 'user_id', "created_at"]
+      }
+    ]
+  }).then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: 'No user with that username!' });
+      return;
+    }
 
-//     const validPassword = dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
-//     if (!validPassword) {
-//       res.status(400).json({ message: 'Incorrect password!' });
-//       return;
-//     }
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password!' });
+      return;
+    }
   
-//     res.json({ user: dbUserData, message: 'You are now logged in!' });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      console.log(dbUserData)
+  
+  
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
 
-// router.post('/logout', (req, res) => {
-//   if (req.session.loggedIn) {
-//     req.session.destroy(() => {
-//       res.status(204).end();
-//     });
-//   }
-//   else {
-//     res.status(404).end();
-//   }
-// });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
 
 router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}

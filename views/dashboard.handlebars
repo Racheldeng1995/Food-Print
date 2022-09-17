@@ -1,0 +1,31 @@
+<section>
+  <nav>
+    {{user.username}}
+    {{farm_name}}
+    Your Money: {{fund}}
+  </nav>
+</section>
+<section>
+  <h2>
+    Animals in Your Farm
+  </h2>
+</section>
+<section>
+  <button id="market" class="button">
+    Go to Animal Market
+  </button>
+</section>
+{{#if animals.length}}
+<section>
+  <ol>
+    {{#each animals as |animal|}}
+    <li>
+      {{> animal-info animal}}
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+<script src="/javascript/logout.js"></script>
+

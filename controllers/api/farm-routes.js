@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const model = require('connect-session-sequelize/lib/model');
 const sequelize = require('../../config/connection');
 const { Farm, User, Animal, Transaction} = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 // get all users
@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
       'id',
       'farm_name',
       'fund',
-      'user_id'
+      'user_id',
+      "created_at"
     ],
     include: [
     {
@@ -42,7 +43,8 @@ router.get('/:id', (req, res) => {
         'id',
         'farm_name',
         'fund',
-        'user_id'
+        'user_id',
+        "created_at"
     ],
     include: [
       {
@@ -68,7 +70,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
    /* req.body should look like this...
     {
       farm_name: "Happy Valley",
@@ -77,16 +79,23 @@ router.post('/', (req, res) => {
   */
   Farm.create({
     farm_name: req.body.farm_name,
-    user_id: req.body.user_id
+    user_id: req.session.user_id
   })
-    .then(dbFarmData => res.json(dbFarmData))
+    .then(dbFarmData => {
+      req.session.save(() => {
+        req.session.farm_id = dbFarmData.id;
+        req.session.farm_name = dbFarmData.farm_name;
+  
+        res.json(dbFarmData);
+      });
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   /* req.body should look like this...
     {
       transaction_id: 4,
@@ -120,7 +129,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
   Farm.destroy({
     where: {

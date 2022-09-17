@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
       'transaction_type',
       'transaction_amount',
       'animal_id',
-      'farm_id'
+      'farm_id',
+      "created_at"
     ],
     include: [
     {
@@ -21,11 +22,11 @@ router.get('/', (req, res) => {
     },
     {
         model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id',sequelize.fn('MAX', sequelize.col('transaction.id'))],
+        attributes: ['id', 'farm_name', 'fund', 'user_id',sequelize.fn('MAX', sequelize.col('transaction.id')),"created_at"],
         include: [
           {
             model: User,
-            attributes:['id', 'username']
+            attributes:['id', 'username', "created_at"]
           }
         ]
     }
@@ -48,7 +49,8 @@ router.get('/:id', (req, res) => {
       'transaction_type',
       'transaction_amount',
       'animal_id',
-      'farm_id'
+      'farm_id',
+      "created_at"
     ],
     include: [
     {
@@ -57,11 +59,11 @@ router.get('/:id', (req, res) => {
     },
     {
         model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id'],
+        attributes: ['id', 'farm_name', 'fund', 'user_id',"created_at"],
         include: [
           {
             model: User,
-            attributes:['id', 'username']
+            attributes:['id', 'username',"created_at"]
           }
         ]
     }
@@ -80,7 +82,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', withAuth,  (req, res) => {
   /* req.body should look like this...
     {
       transaction_type: "Buy",
