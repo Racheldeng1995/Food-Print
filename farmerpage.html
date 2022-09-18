@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./pop-page.css" />
+
 
     <title>Document</title>
 </head>
@@ -24,20 +26,64 @@
         <div class="fund" id="fund"><span class="fund-dec">Your Money: </span> 1.000</div>
     </header>
     <div class="sub">
-        <div class="sub-header-name">Animals In Your Farm</div>
+       
         <button type="button"  class="animalBtn"id="btnAnMarket" >Go to Animal Market</button>
 
     </div>
+    <!-- POP UP SCREEN START -->
     <div class="popup" id="popup-1">
         <div class="overlay"></div>
         <div class="content">
             <div class="close-btn" id="close-pointer">&times;</div>
-            <h1>Title</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi ex aut deserunt, libero accusamus magni at quos, fugiat nesciunt blanditiis iure tempora rerum non dolores obcaecati. Vel soluta tempore quod!</p>
+            <h1 class="animalMarket">Animal Market</h1>
+            <div class="subDiv">
+            <h4 class="subTags-name">Animal Name</h4>
+            <h4 class="subTags-buy">Buy Price</h4>
+            <h4 class="subTags-sell">Sell Price</h4>
+         </div>
+          
+    <section class="pop-up-row">
+
+         <div class="column-market">
+            <div class="sheep-back">
+                <h4 class="sheep">Sheep</h4> 
+                <div id="buy-price-sheep">11</div>
+                <div id="sell-price-sheep">11</div>
+                <button class="buy-btn-cls" id="buy-btn-sheep">Buy</button>
+                <button class="sell-btn-cls" id="sell-btn-sheep">SELL</button>
             
             </div>
+            
+            <div class="cattle-back">
+                <h4 class="cattle">Cattle</h4>
+                <div id="buy-price-sheep">11</div>
+                <div id="sell-price-sheep">11</div>
+                <button class="buy-btn-cls" id="buy-btn-cattle">Buy</button>
+                <button class="sell-btn-cls" id="sell-btn-cattle">SELL</button>
+            </div>
+            <div class="chicken-back">
+                <h4 class="chicken">Chicken</h4>
+                 <div id="buy-price-sheep">11</div>
+                <div id="sell-price-sheep">11</div>
+                <button class="buy-btn-cls" id="buy-btn-chicken">Buy</button>
+                <button class="sell-btn-cls" id="sell-btn-chicken">SELL</button>
+            </div>
+       
+         </div>
+         
+         
+        
+      
+     
+
+
+
+    </section>
+            </div>
+            <!-- POP UP SCREEN END -->
  
     <div class="under-headline">
+        <div class="under-header-name ">Animals In Your Farm</div>
         <div class="under-name">Animal Name</div>
         <div class="under-number">Number Of Animals </div>
 
@@ -45,37 +91,28 @@
 
 <main>
     <div class="row">
-        <div class="column left">
-            <img class="imges" src="./sheep.jpeg" width="150px" height="80px" >
-        </div>
-
-        <div class="column middle">
-         <div class="animal-name"><h4 class="name">Sheep</h4></div>
-     
-        </div>
-
-        <div class="column right">
-            <div class="number-owned"><h4 class="amount" id="sheep-owned">1</h4></div>
-            
-
-        </div>
-        <div class="column left">
-            <img class="imges" src="./cute-sheep-avatar-farm-animal-hand-drawn-illustration-isolated-vector-good-as-sticker-210485836.jpeg" width="150px" height="80px" >
-            
-
-        </div>
-
-        <div class="column middle">
-         <div class="animal-name"><h4 class="name">Sheep</h4></div>
-        
-
-        </div>
-
-        <div class="column right">
-            <div class="number-owned"><h4 class="amount" id="sheep-owned">1</h4></div>
+        <div class="column">
+            <img class="imges" src="./IMG/sheep.jpeg"  alt="Place Holder" width="150px" height="80px" >
+            <img  class="imges" src="./IMG/cattle.jpeg" alt="Place Holder"  width="150px" height="80px" >
+            <img class="imges" src="./IMG/chix.jpeg" alt="Place Holder"  width="150px" height="80px" > 
            
+        </div>
+
+        <div class="column">
+         <div class="animal-name"><h4 class="name">Sheep</h4></div>
+         <div class="animal-name"><h4 class="name">Cattle</h4></div>
+         <div class="animal-name"><h4 class="name">Chicken</h4></div>
+            
 
         </div>
+
+        <div class="column">
+            <div class="number-owned"><h4 class="amount" id="sheep-owned">1</h4></div>
+            <div class="number-owned"><h4 class="amount" id="cattle-owned">222222</h4></div>
+            <div class="number-owned"><h4  class="amount" id="chicken-owned">333333</h4></div>
+
+        </div>
+        
 
 
     </div>
@@ -86,7 +123,6 @@
 
 </main>
 <script src="./popup.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </body>
 
 </html>

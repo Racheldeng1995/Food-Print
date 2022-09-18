@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Fredoka One", cursive;
+}
+.animalMarket{
+    background-color: #6ec207;
+    border-radius: 5px;
+    color: white;
+width: auto;
+}
+
+
+.subDiv{
+    width: 100%;
+    display: flex;
+    
+ 
+    background-color: aqua;
+    height: 80px;
+    font-size: 30px;
+    margin-top: 2%;
+
+}
+.subTags-name{
+    margin-top: 2%;
+   margin-left: 6%;
+}
+.subTags-buy{
+    margin-top: 2%;
+margin-left: 3.5%;
+}
+.subTags-sell{
+    margin-top: 2%;
+margin-left: 3%;
+}
+
+.pop-up-row{
+    display: flex;
+    
+  margin-top: 5%;
+    background: color #ffe6c4;
+    font-size: 30px;
+    width: 100%;
+}
+.column-market{
+    width: 100%;
+    height: 350px;
+  
+}
+.sheep-back, .cattle-back, .chicken-back{
+    
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 60px;
+    background-color: aqua;
+    height: 60px;
+ 
+}
+.chicken-back{
+    margin-right: 10px;
+}
+.buy-btn-cls{
+    width: 100px;
+    background-color: #F5C003;
+    border-radius: 15px ;
+}
+.sell-btn-cls{
+    width: 100px;
+    background-color: #F5C003;
+    border-radius: 15px ;
+}

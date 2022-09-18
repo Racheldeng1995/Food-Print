@@ -3,8 +3,8 @@
   --header-color: #f68b3f;
   --header-font: "Fredoka One", cursive;
   --sub-header: rgba(114, 143, 7, 0.816);
-  --inner-text:rgba(199, 90, 7, 0.673);
-  --inner-text-background:#FFE6C4;
+  --inner-text: rgba(199, 90, 7, 0.673);
+  --inner-text-background: #ffe6c4;
 }
 * {
   margin: 0px;
@@ -49,57 +49,61 @@ body {
   font-family: "Fredoka One", cursive;
   color: var(--header-color);
   margin-right: 10%;
+  
 }
 
 /* header END */
 
 /* SUB HEADER START */
-.sub{
-    display: flex;
-    justify-content: space-between;
-}
-.sub-header-name{
-  font-size: 70px;
-  font-family: "Fredoka One", cursive;
-  color: white;
-  text-align: left;
-  margin-top: 1%;
-  margin-right: 8%;
-}
-.animalBtn{
-    width: 600px;
-    height: 50px;
-    margin-right: 2%;
-    border-radius: 13px;
-    background-color: #6ec207;
-    font-size: large;
+
+
+.animalBtn {
+  margin-left: 50px;
+ float: right;
+  width: 500px;
+  height: 50px;
+  margin-right: 2%;
+  border-radius: 13px;
+  background-color: #6ec207;
+  font-size: large;
 }
 
 /* SUB HEADER END */
 
 /* 
   UNDER-HEADLINE START */
+  .under-header-name {
+    font-size: 50px;
+    border-radius: 12px;
+    font-family: "Fredoka One", cursive;
+    color: white;
+    text-align: left;
+    margin-right: 8%;
+    background-color: #612c07;
+  }
+ 
 .under-headline {
 
-display: content;
+  margin-top: 11%;
+  display: flex;
+  justify-content: space-evenly;
   font-size: 50px;
   font-family: "Fredoka One", cursive;
   color: rgba(114, 143, 7, 0.816);
- 
-  
 }
-.under-name{
-    display: inline-block;
-   margin-top: 50px;
-    margin-left: 39%;
-    background-color: #FFE6C4;
-    border-radius: 12px;
+.under-name {
+  display: inline-block;
+
+color: white;
+  background-color: #612c07;
+  border-radius: 12px;
 }
-.under-number{
-    display: inline-block;
-    margin-left: 14%;
-    background-color: #FFE6C4;
-    border-radius: 12px;
+.under-number {
+  color: white;
+  display: inline-block;
+  margin-left: 5%;
+  background-color: #612c07;
+  border-radius: 12px;
 }
 /* 
   UNDER-HEADLINE END */
@@ -107,107 +111,110 @@ display: content;
 /* Animals START */
 main {
   box-sizing: border-box;
+  margin-top: 70px;
+ 
 }
 
 .column {
+  
+  margin-top: 0px;
   float: left;
   width: 33.33%;
   justify-content: space-between;
   display: grid;
+ 
 }
 
 /* Clear floats after the columns */
-/* .row:after {
+.row:after {
   content: "";
   display: table;
   clear: both;
-} */
-
+  height: 500px;
+} 
 .imges {
-  margin-left: 50%;
+  margin-left: 220%;
   border-radius: 40px;
-  margin-top: 30%;
-
+  margin-top: 27.7%;
 }
 .animal-name {
-  padding-top: 47%;
+  margin-top: 13%;
+  margin-left: 180px;
 }
 .name {
-  width: 100%;
-  margin-left: 70%;
 
-  font-size: 60px;
+  margin-left: 90px;
+
+  font-size: 50px;
   font-family: "Fredoka One", cursive;
   color: rgba(199, 90, 7, 0.673);
-  background-color: #FFE6C4;
+  background-color: #ffe6c4;
   text-align: center;
   border-radius: 13px;
 }
 .number-owned {
-  margin-top: 90px;
+  margin-top: 62px;
+  margin-left: 260px;
+  
 }
 .amount {
   width: 100%;
-  margin-left: 70%;
-  margin-top: 5%;
-  font-size: 60px;
+  
+
+  font-size: 50px;
   font-family: "Fredoka One", cursive;
   color: rgba(199, 90, 7, 0.673);
-  background-color: #FFE6C4;
+  background-color: #ffe6c4;
+  text-align: center;
   border-radius: 13px;
 }
 
-
-
-/* Pop Up OVERLAY */ 
+/* Pop Up OVERLAY */
 /* //////////////////// */
-.popup .overlay{
+.popup .overlay {
   position: fixed;
   top: 0px;
   left: 0px;
   width: 300vw;
   height: 300vh;
-  
+
   z-index: 1;
   display: none;
-  
 }
-.popup .content{
- 
+.popup .content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  background-color: brown;
+  background-color: #612c07f6;
   width: 1150px;
-height: 500px;
+  height: 800px;
   z-index: 2;
   text-align: center;
   padding: 30px;
   box-sizing: border-box;
 }
-.popup .close-btn{
- cursor: pointer;
+.popup .close-btn {
+  cursor: pointer;
   position: absolute;
   right: 20px;
   top: 20px;
   width: 30px;
   height: 30px;
-  color: rgb(165, 14, 153);
+  color: rgb(255, 255, 255);
   font-size: 25px;
   font-weight: 600;
   line-height: 30px;
   text-align: center;
   border-radius: 50%;
 }
-.popup.active .overlay{
+.popup.active .overlay {
   display: block;
 }
-.popup.active .content{ 
+.popup.active .content {
   transition: all 800ms ease-in-out;
-  transform: translate(-50%, -50%) scale(1)
-
+  transform: translate(-50%, -50%) scale(1);
 }
-.popup.active .animalBtn{
+.popup.active .animalBtn {
   display: none;
 }
