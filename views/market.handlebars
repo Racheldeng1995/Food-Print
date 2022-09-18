@@ -1,0 +1,39 @@
+<section>
+  <nav>
+    {{user.username}}
+    {{farm.farm_name}}
+    Your Money: {{farm.fund}}
+  </nav>
+</section>
+<section>
+  <h2>
+    Animals in Your Farm
+  </h2>
+</section>
+{{#if animals.length}}
+<section>
+  <ol>
+    {{#each animals as |animal|}}
+    <li>
+      {{> animal-info animal}}
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+{{#if animalStock.length}}
+<section>
+  <ol>
+    {{#each animalStock as |animalStk|}}
+    <li>
+      {{> stock-info animalStk}}
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+<script src="/javascript/logout.js"></script>
+<script src="/javascript/sell-btn.js"></script>
+<script src="/javascript/buy-btn.js"></script>

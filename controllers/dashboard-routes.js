@@ -33,13 +33,21 @@ router.get('/', withAuth, (req, res) => {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      const animal = dbFarmData
-      res.render('dashboard', { animal, loggedIn: true });
+      const farm = dbFarmData.dataValues
+      const user = dbFarmData.dataValues.user.dataValues
+      const animals = dbFarmData.dataValues.animals.map(animal => animal.get({ plain: true }))
+      // console.log(farm)
+      // console.log(user)
+      // console.log(animals)
+      //res.json(farm, user, animals)
+      res.render('dashboard', { farm, user, animals, loggedIn: true });
     })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
+
+    
 });
 
 module.exports = router;

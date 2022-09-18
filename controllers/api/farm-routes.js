@@ -43,8 +43,7 @@ router.get('/:id', (req, res) => {
         'id',
         'farm_name',
         'fund',
-        'user_id',
-        "created_at"
+        'user_id'
     ],
     include: [
       {
@@ -83,8 +82,9 @@ router.post('/', withAuth, (req, res) => {
   })
     .then(dbFarmData => {
       req.session.save(() => {
-        req.session.farm_id = dbFarmData.id;
-        req.session.farm_name = dbFarmData.farm_name;
+        req.session.user_id = dbFarmData.user_id;
+        req.session.loggedIn = true;
+
   
         res.json(dbFarmData);
       });
@@ -112,7 +112,7 @@ router.put('/:id', withAuth, (req, res) => {
     },
     {
       where: {
-        id: req.params.id
+        id: req.body.farm_id
       }
     }
   )
