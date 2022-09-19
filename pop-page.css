@@ -61,6 +61,19 @@ margin-left: 3%;
 .chicken-back{
     margin-right: 10px;
 }
+.sheep, .cattle, .chicken{
+ margin-top: 1%;}
+
+#buy-price-sheep,
+#buy-price-cattle, #buy-price-chicken{
+    margin-top: 1%;
+}
+#sell-price-sheep,
+#sell-price-cattle, #sell-price-chicken{
+    margin-top: 1%;
+}
+
+
 .buy-btn-cls{
     width: 100px;
     background-color: #F5C003;
