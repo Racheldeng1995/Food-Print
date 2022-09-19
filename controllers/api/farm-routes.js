@@ -12,20 +12,29 @@ router.get('/', (req, res) => {
       'id',
       'farm_name',
       'fund',
-      'user_id',
-      "created_at"
-    ],
-    include: [
+      'user_id'
+  ],
+  
+  include: [
     {
         model: User,
         attributes: ['username']
     },
+    
     {
-        model: Animal,
-        attributes:['id', 'animal_name', 'buy_price', 'sell_price']
-        
+        model: Transaction,
+        attributes:['transaction_type', 'transaction_amount','animal_id'],  
+        include: [
+          {
+            model: Animal,
+          attributes:['animal_name', 'buy_price', 'sell_price', [sequelize.literal("SUM(CASE WHEN transactions.transaction_type = 'Sell' THEN (0-transaction_amount) ELSE transaction_amount END)"), 'owned_animal_count']],
+          
+          }
+        ],
+      
     }
-    ]
+    ],
+    group:sequelize.col('animal_name')
   })
     .then(dbFarmData => res.json(dbFarmData))
     .catch(err => {
@@ -37,7 +46,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   Farm.findOne({
     where: {
-      id: req.params.id
+      user_id: req.session.user_id
     },
     attributes: [
         'id',
@@ -45,16 +54,27 @@ router.get('/:id', (req, res) => {
         'fund',
         'user_id'
     ],
+    
     include: [
       {
           model: User,
           attributes: ['username']
       },
+      
       {
-        model: Animal,
-        attributes:['id', 'animal_name', 'buy_price', 'sell_price', [sequelize.fn('SUM', sequelize.literal("CASE WHEN transaction_type = 'Sell' THEN (0-transaction_amount) ELSE transaction_amount END")), 'owned_animal_count']]
+          model: Transaction,
+          attributes:['transaction_type', 'transaction_amount','animal_id'],  
+          include: [
+            {
+              model: Animal,
+            attributes:['animal_name', 'buy_price', 'sell_price', [sequelize.literal("SUM(CASE WHEN transactions.transaction_type = 'Sell' THEN (0-transaction_amount) ELSE transaction_amount END)"), 'owned_animal_count']],
+            
+            }
+          ],
+        
       }
-      ]
+      ],
+      group:sequelize.col('animal_name')
   })
     .then(dbFarmData => {
       if (!dbFarmData) {

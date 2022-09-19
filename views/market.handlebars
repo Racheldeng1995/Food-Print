@@ -1,5 +1,5 @@
 <section>
-  <nav>
+  <nav  id="market" data-farm-id="{{farm.id}}" data-farm-fund="{{farm.fund}}">
     {{user.username}}
     {{farm.farm_name}}
     Your Money: {{farm.fund}}
@@ -23,7 +23,7 @@
 {{/if}}
 
 {{#if animalStock.length}}
-<section>
+<section id = 'market-main'>
   <ol>
     {{#each animalStock as |animalStk|}}
     <li>

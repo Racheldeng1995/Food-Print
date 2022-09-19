@@ -24,6 +24,7 @@ Farm.belongsTo(User, {
 // Farms belongToMany Animals (through Transaction)
 Farm.belongsToMany(Animal, {
   through: Transaction,
+  unique: false,
   foreignKey: 'farm_id',
   onDelete: 'SET NULL'
 })
@@ -38,7 +39,8 @@ Farm.belongsToMany(Animal, {
 Animal.belongsToMany(Farm, {
   through: Transaction,
   foreignKey: 'animal_id',
-  onDelete: 'SET NULL'
+  onDelete: 'SET NULL',
+  unique: false
 })
 
 // Animals has many transactions
