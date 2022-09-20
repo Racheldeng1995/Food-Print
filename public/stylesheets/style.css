@@ -35,6 +35,37 @@
   button:hover {
     background-color: #3486eb;
   }
+
+  .market-button-buy {
+    background-color: #225ca3;
+    border: 0;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .market-button-buy:hover {
+    background-color: #3486eb;
+  } 
+
+  .market-button-sell {
+    background-color: #225ca3;
+    border: 0;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .market-button-sell:hover {
+    background-color: #3486eb;
+  } 
+
   
   .post-list {
     margin: 0;

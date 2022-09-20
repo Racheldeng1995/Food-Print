@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id', "created_at"]
+        attributes: ['id', 'farm_name', 'fund', 'user_id']
       }
     ]
   })
@@ -48,7 +48,7 @@ router.get('/:username', (req, res) => {
     include: [
       {
         model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id',"created_at"]
+        attributes: ['id', 'farm_name', 'fund', 'user_id']
       }
     ]
   })
