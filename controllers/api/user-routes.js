@@ -44,13 +44,7 @@ router.get('/:username', (req, res) => {
     attributes: { exclude: ['password'] },
     where: {
       username: req.params.username
-    },
-    include: [
-      {
-        model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id']
-      }
-    ]
+    }
   })
     .then(dbUserData => {
       if (!dbUserData) {
