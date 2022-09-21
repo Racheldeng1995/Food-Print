@@ -216,6 +216,7 @@ footer {
     color: var(--white);
     margin: 5%;
     padding: 5% 20% 1% 20%;
+    border-radius: 5px;
 }
 
 .number {
@@ -223,6 +224,7 @@ footer {
     color: var(--white);
     margin: 5%;
     padding: 5% 20% 1% 20%;
+    border-radius: 5px;
 }
 
 /* FARMPAGE END*/
