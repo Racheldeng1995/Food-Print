@@ -86,6 +86,12 @@ nav a {
     font-size: 20px;
 }
 
+.header-font {
+    text-decoration: none;
+    color: var(--tertiary-color);
+    font-weight: bold;
+    transition: color .1s;
+}
 /* HEADER END */
 
 /* BODY START */
