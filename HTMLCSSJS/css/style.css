@@ -50,7 +50,6 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    text-shadow: -1px 0 black,
 }
 
 .wrapper {
@@ -183,7 +182,7 @@ footer {
 }
 
 .btn-margin {
-    margin: 1%;
+    margin: 1% 0%;
 }
 
 .farm-content {
@@ -199,7 +198,7 @@ footer {
 
 .table-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 
@@ -208,6 +207,7 @@ footer {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    margin: 5%;
 }
 
 .animal-number {
@@ -215,6 +215,7 @@ footer {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    margin: 5%;
 }
 
 .animal {
@@ -233,4 +234,47 @@ footer {
     border-radius: 5px;
 }
 
+h3 {
+    white-space: nowrap;
+}
+
+.table-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.header-padding {
+    padding: 1% 2%;
+}
+
+.header-color {
+    background-color: var(--tertiary-color);
+}
 /* FARMPAGE END*/
+
+/* MARKET START*/
+.market-header {
+    background-color: var(--fourth-color);
+}
+
+.market-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex: 1;
+    background-image: url("../images/farm_bg_opacity.jpg");
+    background-size: contain;
+    background-position: center;
+}
+
+.sell-buttons {
+    margin: 5%;
+    padding: 5% 20% 1% 20%;
+    border-radius: 5px;
+}
+
+.placeholder {
+    visibility: hidden;
+}
+/* MARKET END*/
