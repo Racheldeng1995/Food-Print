@@ -3,7 +3,13 @@
     background-color: var(--sixth-color);
 }
 
-
+.userinfo {
+    background-color: var(--secondary-color);  
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly; 
+}
 .button-container {
     position: relative;
     display: flex;
@@ -90,4 +96,5 @@ h3 {
     align-items: center;
     text-align: center;
 }
+
 /* FARMPAGE END*/

@@ -105,7 +105,6 @@ nav a {
     flex-direction: row;
     position: relative;
     flex: 1;
-    padding: 2% 4%;
     background-image: url("../images/farm_bg.jpg");
     background-size: contain;
     background-position: center;
