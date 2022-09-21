@@ -5,26 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FoodPrint</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin|Alata">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/homepage.css">
+  {{!-- <link rel="stylesheet" href="/stylesheets/style.css"> old --}} 
 </head>
 
 <body>
   <div class="wrapper">
     <header>
-      <h1>
+      <h2>
         <a href="/">Food Print</a>
-      </h1>
+      </h2>
       <nav>
         {{#if loggedIn}}
         <a href="/dashboard">Dashboard</a>
         <button id="logout" class="btn-no-style">Logout</button>
         {{else}}
-        <a href="/login">login</a> 
-        <a href="/signup">Sign Up</a> 
+        <a href="/login" class="text-normal">login</a> 
+        {{!-- <a href="/signup" class="text-normal">Sign Up</a>  --}}
         {{/if}}        
       </nav>
     </header>
-    <main>
+    <main class="content">
       {{{body}}}
     </main>
     <footer>
