@@ -49,19 +49,19 @@
                 </div>
             </div>
     </div>
-    
+    {{#if animals.length}}
+    <section>
+      <ol>
+        {{#each animals as |animal|}}
+        <li>
+          {{> animal-info animal}}
+        </li>
+        {{/each}}
+      </ol>
+    </section>
+    {{/if}}
 </main>
-{{#if animals.length}}
-<section>
-  <ol>
-    {{#each animals as |animal|}}
-    <li>
-      {{> animal-info animal}}
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
+
 
 <script src="/javascript/logout.js"></script>
 <script src="/javascript/market.js"></script>

@@ -1,38 +1,162 @@
-<section>
-  <nav  id="market" data-farm-id="{{farm.id}}" data-farm-fund="{{farm.fund}}">
-    {{user.username}}
-    {{farm.farm_name}}
-    Your Money: {{farm.fund}}
-  </nav>
-</section>
-<section>
-  <h2>
-    Animals in Your Farm
-  </h2>
-</section>
-{{#if animals.length}}
-<section>
-  <ol>
-    {{#each animals as |animal|}}
-    <li>
-      {{> animal-info animal}}
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
+<div class="farm-content">
+    <section class="userinfo" id="market" data-farm-id="{{farm.id}}" data-farm-fund="{{farm.fund}}">
+      <h2 class="header-font">
+        {{user.username}}
+      </h2>
+      <h2 class="header-font">
+        {{farm.farm_name}}    
+      </h2>
+      <h2 class="header-font">
+        Your Money: {{farm.fund}}    
+      </h2>
+    </section>
+    <div class="market-content">
+      <!-- Animals in Your Farm Section -->
+      <div class="animals-own">
+          <div class="second-header">
+              <h1 class="text-align text-white text-bold text-aladin text-large text-shadow">
+                Animals in Your farm
+              </h1>
+          </div>
+          <div class ="table-container">
+              <!-- table header -->
+              <div class="table-content header-color box-shadow">
+                  <div class="header-padding"><h3>Animal Name</h3></div>
+                  <div class="header-padding"><h3>Number of Animals You Owned</h3></div>
+              </div>
+              <!-- table content -->
+              <div class="table-content">
+                  <div class="animal-name box-display">
+                      <div class="animal">
+                          <h4>Chiken</h4>
+                      </div>
+                      <div class="animal">
+                          <h4>Sheep</h4>
+                      </div>
+                      <div class="animal">
+                          <h4>Cattle</h4>
+                      </div>
+                  </div>
+                  <div class="animal-number box-display">
+                      <div class="number">
+                          <h4>1</h4>
+                      </div>
+                      <div class="number">
+                          <h4>2</h4>
+                      </div>
+                      <div class="number">
+                          <h4>3</h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Animal Market Section -->
+      <div class="market">
+          <div class="market-header">
+              <h1 class="text-align text-white text-bold text-aladin text-large text-shadow">
+                Animal Market
+              </h1>
+          </div>
+          <div class ="table-container">
+              <!-- table header -->
+              <div class="table-content header-color box-shadow">
+                  <div class="header-padding"><h3>Animal Name</h3></div>
+                  <div class="header-padding"><h3>Buy Price</h3></div>
+                  <div class="header-padding"><h3>Sell Price</h3></div>
+                  <div class="header-padding"><h3 class="placeholder">Place</h3></div>
+                  <div class="header-padding"><h3 class="placeholder">Place</h3></div>
+              </div>
+              <!-- table content -->
+              <div class="table-content">
+                  <div class="animal-name box-display">
+                      <div class="animal">
+                          <h4>Chiken</h4>
+                      </div>
+                      <div class="animal">
+                          <h4>Sheep</h4>
+                      </div>
+                      <div class="animal">
+                          <h4>Cattle</h4>
+                      </div>
+                  </div>
+                  <div class="animal-number box-display">
+                      
+                      <div class="number">
+                          <h4>10</h4>
+                      </div>
+                      <div class="number">
+                          <h4>20</h4>
+                      </div>
+                      <div class="number">
+                          <h4>30</h4>
+                      </div>
+                  </div>
+                  <div class="animal-number box-display">
+                      
+                      <div class="number">
+                          <h4>10</h4>
+                      </div>
+                      <div class="number">
+                          <h4>20</h4>
+                      </div>
+                      <div class="number">
+                          <h4>30</h4>
+                      </div>
+                  </div>
+                  <div class="animal-number box-display">
+                      <div class="sell-button">
+                          <!-- <button type="submit" class="button btn-margin">Sell</button> -->
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#sellModal" data-whatever="@mdo">Sell</button>
+                      </div>
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#sellModal" data-whatever="@mdo">Sell</button>
+                      </div>
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#sellModal" data-whatever="@mdo">Sell</button>
+                      </div>
+                  </div>
+                  <div class="animal-number box-display">
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#buyModal" data-whatever="@mdo">Buy</button>
+                      </div>
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#buyModal" data-whatever="@mdo">Buy</button>
+                      </div>
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#buyModal" data-whatever="@mdo">Buy</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    {{#if animals.length}}
+    <section>
+      <ol>
+        {{#each animals as |animal|}}
+        <li>
+          {{> animal-info animal}}
+        </li>
+        {{/each}}
+      </ol>
+    </section>
+    {{/if}}
 
-{{#if animalStock.length}}
-<section id = 'market-main'>
-  <ol>
-    {{#each animalStock as |animalStk|}}
-    <li>
-      {{> stock-info animalStk}}
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
+    {{#if animalStock.length}}
+    <section id = 'market-main'>
+      <ol>
+        {{#each animalStock as |animalStk|}}
+        <li>
+          {{> stock-info animalStk}}
+        </li>
+        {{/each}}
+      </ol>
+    </section>
+    {{/if}}
+</div>
+
+
 
 <script src="/javascript/logout.js"></script>
 <script src="/javascript/sell-btn.js"></script>
