@@ -84,10 +84,10 @@ router.get('/', withAuth, (req, res) => {
                 const user = dbMarketData.user
                 const animals = dbMarketData.animals
                 //const transactions = dbMarketData.transactions
-                console.log(animalStock)
-                console.log(farm)
-                console.log(user)
-                console.log(animals)
+                //console.log(animalStock)
+                //console.log(farm)
+                //console.log(user)
+                //console.log(animals)
                 //console.log(transactions)
                 res.render('market', { farm, user, animals, loggedIn: true, animalStock });
             })

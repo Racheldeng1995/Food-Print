@@ -12,8 +12,7 @@ router.get('/', (req, res) => {
       'transaction_type',
       'transaction_amount',
       'animal_id',
-      'farm_id',
-      "created_at"
+      'farm_id'
     ],
     include: [
     {
@@ -22,11 +21,11 @@ router.get('/', (req, res) => {
     },
     {
         model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id',sequelize.fn('MAX', sequelize.col('transaction.id')),"created_at"],
+        attributes: ['id', 'farm_name', 'fund', 'user_id'],
         include: [
           {
             model: User,
-            attributes:['id', 'username', "created_at"]
+            attributes:['id', 'username']
           }
         ]
     }
@@ -49,8 +48,7 @@ router.get('/:id', (req, res) => {
       'transaction_type',
       'transaction_amount',
       'animal_id',
-      'farm_id',
-      "created_at"
+      'farm_id'
     ],
     include: [
     {
@@ -59,11 +57,11 @@ router.get('/:id', (req, res) => {
     },
     {
         model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id',"created_at"],
+        attributes: ['id', 'farm_name', 'fund', 'user_id'],
         include: [
           {
             model: User,
-            attributes:['id', 'username',"created_at"]
+            attributes:['id', 'username']
           }
         ]
     }

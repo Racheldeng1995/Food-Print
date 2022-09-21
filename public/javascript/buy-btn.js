@@ -1,21 +1,17 @@
-async function buyBtnHandler(event) {
-    event.preventDefault();
+async function buyBtnHandler(id) {
 
     const transaction_amount = parseInt(window.prompt("Enter the number of animals you want to buy"))
     const transaction_type = "Buy";
-    const buy_price = 0-parseInt(document.getElementById('buy-price').textContent);
-    const animal_id = parseInt(document.getElementById('animal-name').getAttribute('data-animal-id'))
+    const buy_price = 0-parseInt(document.getElementById(`buy-${id}`).getAttribute('data-buy-price'));
+    const animal_id = parseInt(document.getElementById(`buy-${id}`).getAttribute('data-animal-id'))
     const farm_id = parseInt(document.getElementById('market').getAttribute('data-farm-id'))
     const fund = parseInt(document.getElementById('market').getAttribute('data-farm-fund'))
     console.log(transaction_amount)
     console.log(transaction_type)
+    console.log(document.getElementById(id))
     console.log(animal_id)
     console.log(farm_id)
     console.log(buy_price)
-    console.log(document.getElementById('animal-name'))
-    console.log(document.getElementById('market'))
-    
-    console.log((document.getElementById('buy-price')))
   
     if (transaction_amount && transaction_type && animal_id && farm_id && buy_price) {
       const responseTrans = await fetch('/api/transactions/', {
@@ -54,4 +50,6 @@ async function buyBtnHandler(event) {
   }
   
   
-  document.getElementById('buy').addEventListener('click', buyBtnHandler);
+  // document.querySelectorAll('.market-button-buy').forEach(el => {
+  //   el.addEventListener('click',buyBtnHandler)
+  // })

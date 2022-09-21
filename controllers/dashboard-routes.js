@@ -30,7 +30,7 @@ router.get('/', withAuth, (req, res) => {
           include: [
             {
               model: Animal,
-            attributes:['animal_name', 'buy_price', 'sell_price', [sequelize.literal("SUM(CASE WHEN transactions.transaction_type = 'Sell' THEN (0-transaction_amount) ELSE transaction_amount END)"), 'owned_animal_count']],
+            attributes:['id','animal_name', 'buy_price', 'sell_price', [sequelize.literal("SUM(CASE WHEN transactions.transaction_type = 'Sell' THEN (0-transaction_amount) ELSE transaction_amount END)"), 'owned_animal_count']],
             
             }
           ],
@@ -48,7 +48,7 @@ router.get('/', withAuth, (req, res) => {
       const user = farm.user
       const animals = farm.transactions
       
-      console.log(farm)
+      //console.log(farm)
       //console.log(animals)
       //res.json(farm, user, animals)
       res.render('dashboard', { farm, user, animals, loggedIn: true})//user, animals, loggedIn: true });

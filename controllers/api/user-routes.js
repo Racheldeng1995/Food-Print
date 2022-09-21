@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id', "created_at"]
+        attributes: ['id', 'farm_name', 'fund', 'user_id']
       }
     ]
   })
@@ -44,13 +44,7 @@ router.get('/:username', (req, res) => {
     attributes: { exclude: ['password'] },
     where: {
       username: req.params.username
-    },
-    include: [
-      {
-        model: Farm,
-        attributes: ['id', 'farm_name', 'fund', 'user_id',"created_at"]
-      }
-    ]
+    }
   })
     .then(dbUserData => {
       if (!dbUserData) {
