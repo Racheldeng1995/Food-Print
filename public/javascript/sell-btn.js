@@ -1,5 +1,6 @@
 async function sellBtnHandler(id) {
 
+
   const transaction_amount = parseInt(window.prompt("Enter the number of animals you want to sell"))
   const transaction_type = "sell";
   const sell_price = parseInt(document.getElementById(`sell-${id}`).getAttribute('data-sell-price'));
@@ -13,6 +14,7 @@ async function sellBtnHandler(id) {
   console.log(farm_id)
   console.log(sell_price)
   console.log(`sell-${id}`)
+
 
   if (transaction_amount && transaction_type && animal_id && farm_id && sell_price) {
     const responseTrans = await fetch('/api/transactions/', {
