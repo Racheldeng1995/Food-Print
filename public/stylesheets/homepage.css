@@ -87,8 +87,15 @@ a:hover {
 color: var(--tertiary-color);
 }
 
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 nav a {
     font-size: 20px;
+    margin-right: 10%;
 }
 
 .header-font {
@@ -114,7 +121,7 @@ nav a {
     padding: 2% 4%;
     left: 10%;
     top: 5%;
-    width: 40%;
+    width: 50%;
 }
 
 .text-align {
