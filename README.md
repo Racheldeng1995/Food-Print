@@ -57,4 +57,4 @@ Money user owned should be reduced
 
 ## **Website**
 
-![GitHub Logo](/public/images/applicationImg.JPG)
+![GitHub Logo](/public/images/applicationImg.jpg)
