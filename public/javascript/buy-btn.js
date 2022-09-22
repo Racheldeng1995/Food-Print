@@ -1,6 +1,14 @@
-async function buyBtnHandler(id) {
+function buyBtnHandler(id) {
+    bootbox.prompt({
+      title: "Enter the number of animals you want to buy: ",
+      inputType: 'number',
+      callback: function (result) {
+          buyCalculation(id, result);
+      }
+    });}
 
-    const transaction_amount = parseInt(window.prompt("Enter the number of animals you want to buy"))
+async function buyCalculation (id, numberInput) {    
+    const transaction_amount = numberInput;
     const transaction_type = "Buy";
     const buy_price = 0-parseInt(document.getElementById(`buy-${id}`).getAttribute('data-buy-price'));
     const animal_id = parseInt(document.getElementById(`buy-${id}`).getAttribute('data-animal-id'))
@@ -25,7 +33,6 @@ async function buyBtnHandler(id) {
         headers: { 'Content-Type': 'application/json' }
       });
   
-
     const responseFund = await fetch('/api/farms/:id', {
         method: 'put',
         body: JSON.stringify({
@@ -37,19 +44,13 @@ async function buyBtnHandler(id) {
             fund: fund
         }),
         headers: { 'Content-Type': 'application/json' }
-      });
+        });
 
-    if (responseFund.ok && responseTrans.ok) {
-    document.location.replace('/market');
-    } else {
-    alert(responseFund.statusText);
-    alert(responseTrans.statusText)
+        if (responseFund.ok && responseTrans.ok) {
+        document.location.replace('/market');
+        } else {
+        alert(responseFund.statusText);
+        alert(responseTrans.statusText)
+        }
     }
-
-}
   }
-  
-  
-  // document.querySelectorAll('.market-button-buy').forEach(el => {
-  //   el.addEventListener('click',buyBtnHandler)
-  // })
