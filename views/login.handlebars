@@ -3,13 +3,13 @@
         <form class="bg-color-light color-padding box-shadow">
             <h1 class="text-align text-green text-bold text-aladin text-large text-shadow text-stroke">Start Your Farm!</h1>
             <div class="form-group">
-                <input type="text" class="form-control text-align" id="user-login" placeholder="Enter your username" name="username" />
+                <input type="text" class="form-control text-align" id="user-login" placeholder="Enter your username" name="username" required="required" />
             </div>
             <div class="form-group">
-                <input type="email" class="form-control text-align" id="email-login" placeholder="Enter your email" name="email" />
+                <input type="email" class="form-control text-align" id="email-login" placeholder="Enter your email" name="email" required="required" />
             </div>
             <div class="form-group">
-                <input type="password" class="form-control text-align" id="password-login" placeholder="Enter your password" name="pwd" />
+                <input type="password" class="form-control text-align" id="password-login" placeholder="Enter your password" name="pwd" required="required" />
             </div>
             <button id="btn-login" type="submit" class="button" data-toggle="modal" data-target="#confirmModal">Login and Get Started!</button>
         </form>
