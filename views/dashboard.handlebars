@@ -24,42 +24,21 @@
                 <div class="header-padding text-shadow"><h3>Animal Name</h3></div>
                 <div class="header-padding text-shadow"><h3>Number of Animals You Owned</h3></div>
             </div>
-            <div class="table-content">
-                <div class="animal-name box-display">
-                    <div class="animal">
-                        <h4>Chiken</h4>
-                    </div>
-                    <div class="animal">
-                        <h4>Sheep</h4>
-                    </div>
-                    <div class="animal">
-                        <h4>Cattle</h4>
-                    </div>
-                </div>
-                <div class="animal-number box-display">
-                    <div class="number">
-                        <h4>1</h4>
-                    </div>
-                    <div class="number">
-                        <h4>2</h4>
-                    </div>
-                    <div class="number">
-                        <h4>3</h4>
-                    </div>
-                </div>
-            </div>
+            
+            {{#if animals.length}}
+            <section>
+              <ul>
+                {{#each animals as |animal|}}
+                <li>
+                  {{> animal-info animal}}
+                </li>
+                {{/each}}
+              </ul>
+            </section>
+            {{/if}}
+            
     </div>
-    {{#if animals.length}}
-    <section>
-      <ol>
-        {{#each animals as |animal|}}
-        <li>
-          {{> animal-info animal}}
-        </li>
-        {{/each}}
-      </ol>
-    </section>
-    {{/if}}
+
 </main>
 
 
