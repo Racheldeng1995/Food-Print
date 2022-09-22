@@ -1,4 +1,4 @@
-# Food-Print
+# Food-Print (https://food-print-game.herokuapp.com/)
 ## Description
 This application can help you build your own virtual farm, 
 ## Table of Contents
