@@ -85,6 +85,7 @@ a {
 
 a:hover {
 color: var(--tertiary-color);
+text-decoration: none;
 }
 
 nav {

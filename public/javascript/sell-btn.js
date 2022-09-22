@@ -1,7 +1,15 @@
-async function sellBtnHandler(id) {
+function sellBtnHandler(id) {
+  bootbox.prompt({
+    title: "Enter the number of animals you want to sell: ",
+    inputType: 'number',
+    callback: function (result) {
+        sellCalculation(id, result);
+    }
+  });}
 
+async function sellCalculation (id, numberInput) {
 
-  const transaction_amount = parseInt(window.prompt("Enter the number of animals you want to sell"))
+  const transaction_amount = numberInput;
   const transaction_type = "sell";
   const sell_price = parseInt(document.getElementById(`sell-${id}`).getAttribute('data-sell-price'));
   const animal_id = parseInt(document.getElementById(`sell-${id}`).getAttribute('data-animal-id'))
