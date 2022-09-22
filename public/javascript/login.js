@@ -4,11 +4,7 @@ async function loginFormHandler(event) {
     const username = document.querySelector('#user-login').value.trim();
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
-    alert("I'm here")
-    console.log(username)
-    console.log(email)
-    console.log(password)
-  
+    
     if (username && email && password) {
       const response = await fetch('/api/users/login', {
         method: 'post',
@@ -19,16 +15,32 @@ async function loginFormHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
-  
-    if (response.ok) {
-    document.location.replace('/dashboard');
-    } else {
-    alert(response.statusText);
-    }
-}
-  }
-  
-  
-  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-  
+    
+      if (response.status == 200) {    
+        var bodyEl = document.querySelector("#confirmBody");
+        bodyEl.textContent = "Pass!";
 
+        var loginBtn = document.querySelector("#btn-pass");
+        var toDashboard = function () {
+          document.location.replace('/dashboard');
+        };
+        loginBtn.addEventListener('click', toDashboard);
+        // console.log(username);
+        // $('#confirmModal').modal();
+      } else {
+        var bodyEl = document.querySelector("#confirmBody");
+        bodyEl.textContent = "Failed to login. Please ensure you enter matched username, email, and password!";
+      
+        var loginBtn = document.querySelector("#btn-pass");
+        var backtoLogin = function () {
+          document.location.replace('/login');
+        };
+  
+        loginBtn.addEventListener('click', backtoLogin);
+      };
+      
+    };
+
+}
+   
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
