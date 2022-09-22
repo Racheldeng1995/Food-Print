@@ -91,6 +91,7 @@ ul {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    overflow: auto;
 }
 
 ul li {

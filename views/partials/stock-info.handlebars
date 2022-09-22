@@ -1,9 +1,10 @@
-<article>
-  <div>
-    <button id="animal-name">{{animal_name}}</button> 
+<article class="stock-info">
+    {{!-- <button id="animal-name">{{animal_name}}</button> 
     <button id="buy-price">{{buy_price}}</button> 
-    <button id="sell-price">{{sell_price}}</button> 
-    <button id = "buy-{{this.id}}" data-buy-id="buy" data-buy-price ="{{buy_price}}"  data-animal-id="{{id}}" class="market-button-buy" onclick="buyBtnHandler('{{this.id}}')">Buy</button> 
-    <button id = "sell-{{this.id}}" data-sell-id="sell" data-sell-price ="{{sell_price}}"  data-animal-id="{{id}}" class="market-button-sell" onclick="sellBtnHandler('{{this.id}}')">Sell</button>
-  </div>
+    <button id="sell-price">{{sell_price}}</button>  --}}
+    <div id="animal-name" class="stock-box-display market-animal-font"><h4>{{animal_name}}</h4></div> 
+    <div id="buy-price" class="stock-box-display market-animal-font"><h4>{{buy_price}}</h4></div> 
+    <div id="sell-price" class="stock-box-display market-animal-font"><h4>{{sell_price}}</h4></div>
+    <button id = "buy-{{this.id}}" data-buy-id="buy" data-buy-price ="{{buy_price}}"  data-animal-id="{{id}}" class="btn btn-sell" onclick="buyBtnHandler('{{this.id}}')">Buy</button> 
+    <button id = "sell-{{this.id}}" data-sell-id="sell" data-sell-price ="{{sell_price}}"  data-animal-id="{{id}}" class="btn btn-sell" onclick="sellBtnHandler('{{this.id}}')">Sell</button>
 </article>
