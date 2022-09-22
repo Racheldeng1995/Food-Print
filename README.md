@@ -49,3 +49,12 @@ Money user owned should be reduced
   * WHEN I click button of cancel
    
     THEN either buying window or selling window should be closed and I’m presented on animal market page.
+    
+## **Built With**
+* CSS
+* JavaScript
+* Handlerbars
+
+## **Website**
+
+![GitHub Logo](/public/assets/images/applicationImg.JPG)
