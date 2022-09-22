@@ -1,0 +1,47 @@
+
+<main class="farm-content">
+    <div class="second-header">
+      <h1 class="text-align text-white text-bold text-aladin text-large text-shadow">
+        Animals in Your farm
+      </h1>
+    </div>
+    <section class="userinfo">
+          <h2 class="header-font">
+            {{user.username}}
+          </h2>
+          <h2 class="header-font">
+            {{farm.farm_name}}    
+          </h2>
+          <h2 class="header-font">
+            Your Money: {{farm.fund}}    
+          </h2>
+    </section>
+    <div class="button-container">
+        <button type="button" class="button btn-margin" id="market">Go to Animal Market</button>
+    </div>
+    <div class ="table-container">
+            <div class="table-content header-color box-shadow">
+                <div class="header-padding text-shadow"><h3>Animal Name</h3></div>
+                <div class="header-padding text-shadow"><h3>Number of Animals You Owned</h3></div>
+            </div>
+            
+            {{#if animals.length}}
+            <section>
+              <ul>
+                {{#each animals as |animal|}}
+                <li>
+                  {{> animal-info animal}}
+                </li>
+                {{/each}}
+              </ul>
+            </section>
+            {{/if}}
+            
+    </div>
+
+</main>
+
+
+<script src="/javascript/logout.js"></script>
+<script src="/javascript/market.js"></script>
+

@@ -1,0 +1,72 @@
+/* MARKET START*/
+.market-header {
+    background-color: var(--fourth-color);
+}
+
+.market-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    flex: 1;
+    background-image: url("../images/farm_bg_opacity.jpg");
+    background-size: contain;
+    background-position: center;
+}
+
+.animals-own {
+    width: 40%;
+    position: absolute;
+    left: 0;
+    
+}
+
+.market {
+    width: 50%;
+    position: absolute;
+    right: 0;
+}
+
+/* .sell-button {
+    margin: 2%;
+    padding: 5% 20% 1% 20%;
+    border-radius: 5px;
+} */
+
+.btn-sell {
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    margin: 2%;
+}
+.placeholder {
+    visibility: hidden;
+}
+
+.market-animal-font {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1%;
+    background-color: var(--fourth-color);
+    color: var(--white);
+    margin: 1%;
+    /* padding: 5% 20% 1% 20%;  */
+    border-radius: 5px;
+}
+
+.stock-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.stock-box-display {
+    width: 120px;
+    max-width: 250px;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    margin: 2%;
+}
+/* MARKET END*/

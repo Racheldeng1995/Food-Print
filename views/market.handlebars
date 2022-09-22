@@ -1,0 +1,154 @@
+<div class="farm-content">
+    <section class="userinfo" id="market" data-farm-id="{{farm.id}}" data-farm-fund="{{farm.fund}}">
+      <h2 class="header-font">
+        {{user.username}}
+      </h2>
+      <h2 class="header-font">
+        {{farm.farm_name}}    
+      </h2>
+      <h2 class="header-font">
+        Your Money: {{farm.fund}}    
+      </h2>
+    </section>
+    <div class="market-content">
+      <!-- Animals in Your Farm Section -->
+      <div class="animals-own">
+          <div class="second-header">
+              <h1 class="text-align text-white text-bold text-aladin text-large text-shadow">
+                Animals in Your farm
+              </h1>
+          </div>
+          <div class ="table-container">
+              <!-- table header -->
+              <div class="table-content header-color box-shadow">
+                  <div class="header-padding"><h3>Animal Name</h3></div>
+                  <div class="header-padding"><h3>Number of Animals You Owned</h3></div>
+              </div>
+              <!-- table content -->
+              {{#if animals.length}}
+              <section>
+                <ul>
+                  {{#each animals as |animal|}}
+                  <li>
+                    {{> animal-info animal}}
+                  </li>
+                  {{/each}}
+                </ul>
+              </section>
+              {{/if}}
+          </div>
+      </div>
+      <!-- Animal Market Section -->
+      <div class="market">
+          <div class="market-header">
+              <h1 class="text-align text-white text-bold text-aladin text-large text-shadow">
+                Animal Market
+              </h1>
+          </div>
+          <div class ="table-container">
+              <!-- table header -->
+              <div class="table-content header-color box-shadow">
+                  <div class="header-padding"><h3>Animal Name</h3></div>
+                  <div class="header-padding"><h3>Buy Price</h3></div>
+                  <div class="header-padding"><h3>Sell Price</h3></div>
+                  <div class="header-padding"><h3 class="placeholder">Place</h3></div>
+                  <div class="header-padding"><h3 class="placeholder">Place</h3></div>
+              </div>
+              {{#if animalStock.length}}
+              <section id = 'market-main'>
+                <ul>
+                  {{#each animalStock as |animalStk|}}
+                  <li>
+                    {{> stock-info animalStk}}
+                  </li>
+                  {{/each}}
+                </ul>
+              </section>
+              {{/if}}
+              <!-- table content -->
+              {{!-- <div class="table-content">
+                  <div class="animal-number box-display">
+                      <div class="sell-button">
+                          <!-- <button type="submit" class="button btn-margin">Sell</button> -->
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#sellModal" data-whatever="@mdo">Sell</button>
+                      </div>
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#sellModal" data-whatever="@mdo">Sell</button>
+                      </div>
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#sellModal" data-whatever="@mdo">Sell</button>
+                      </div>
+                  </div>
+                  <div class="animal-number box-display">
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#buyModal" data-whatever="@mdo">Buy</button>
+                      </div>
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#buyModal" data-whatever="@mdo">Buy</button>
+                      </div>
+                      <div class="sell-button">
+                          <button type="button" class="btn btn-sell" data-toggle="modal" data-target="#buyModal" data-whatever="@mdo">Buy</button>
+                      </div>
+                  </div>
+              </div> --}}
+          </div>
+      </div>
+    </div>
+</div>
+<!--  Sell Model -->
+<div class="modal fade" id="sellModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter the number of animals you want to sell: </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" id="buy-number">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-sell">Submit</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--  Buy Model -->
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter the number of animals you want to buy: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" id="buy-number">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-sell">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/javascript/logout.js"></script>
+<script src="/javascript/sell-btn.js"></script>
+<script src="/javascript/buy-btn.js"></script>
